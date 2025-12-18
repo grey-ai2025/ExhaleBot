@@ -19,6 +19,9 @@
 
     <!-- Lenis Smooth Scroll (disabled - causes scroll delay on GitHub Pages) -->
     <!-- <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> -->
+
+    <!-- Typeform Embed -->
+    <script src="https://embed.typeform.com/next/embed.js"></script>
 </head>
 <body>
     <!-- Initial Blur Overlay -->
@@ -65,22 +68,7 @@
             <h1>Exhale</h1>
             <p class="tagline">The AI executive for executive parents</p>
 
-            <form id="waitlistForm">
-                <div class="input-group" id="inputGroup">
-                    <div class="input-wrapper">
-                        <input
-                            type="email"
-                            id="emailInput"
-                            name="email"
-                            placeholder="Enter your email"
-                            required
-                            autocomplete="email"
-                        >
-                    </div>
-                    <button type="submit" id="submitBtn">Join Waitlist</button>
-                </div>
-                <div class="success" id="successMsg">You're on the list! We'll be in touch soon.</div>
-            </form>
+            <button class="join-waitlist-btn" onclick="document.getElementById('typeform-section').scrollIntoView({ behavior: 'smooth' })">Apply Now</button>
         </div>
 
         <a href="#pain-points" class="scroll-indicator">
@@ -241,38 +229,21 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- CTA Section with Typeform -->
+    <section id="typeform-section" class="cta-section">
         <div class="section-container">
             <div class="cta-wrapper reveal">
                 <div class="cta-content">
-                    <span class="section-label">Early Access</span>
+                    <span class="section-label">Get Started</span>
                     <h2>Ready to Exhale?</h2>
-                    <p>Join the waitlist and be the first to experience the AI executive that gives you back your mental bandwidth. Early supporters receive priority access.</p>
+                    <p>Apply now and be the first to experience the AI executive that gives you back your mental bandwidth.</p>
                 </div>
-                <div class="cta-form-container">
-                    <form id="waitlistFormBottom">
-                        <div class="input-group" id="inputGroupBottom">
-                            <div class="input-wrapper">
-                                <input
-                                    type="email"
-                                    id="emailInputBottom"
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    required
-                                    autocomplete="email"
-                                >
-                            </div>
-                            <button type="submit" id="submitBtnBottom">Join Waitlist</button>
-                        </div>
-                        <!-- <p class="form-note">No spam. Unsubscribe anytime. We respect your inbox.</p> -->
-                        <div class="success" id="successMsgBottom">You're on the list! We'll be in touch soon</div>
-                    </form>
+                <div class="typeform-container">
+                    <div data-tf-live="01KCSRGA2N1VAMCM729CFEZPKZ"></div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
