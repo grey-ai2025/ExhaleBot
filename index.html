@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhale - The AI Executive for Executive Parents</title>
+    <meta name="description" content="Exhale is your AI-powered family assistant that manages school calendars, emails, schedules, and communications so you can focus on what matters most.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Lenis Smooth Scroll (disabled - causes scroll delay on GitHub Pages) -->
+    <!-- <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> -->
+</head>
+<body>
+    <!-- Initial Blur Overlay -->
+    <div class="blur-overlay" id="blurOverlay"></div>
+    <style>
+        .blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+    <!-- Ambient Background Effects -->
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-toggle-icon moon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </span>
+        <span class="theme-toggle-icon sun">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+        </span>
+        <div class="theme-toggle-track">
+            <div class="theme-toggle-thumb"></div>
+        </div>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Exhale</h1>
+            <p class="tagline">The AI executive for executive parents</p>
+
+            <form id="waitlistForm">
+                <div class="input-group" id="inputGroup">
+                    <div class="input-wrapper">
+                        <input
+                            type="email"
+                            id="emailInput"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+                    <button type="submit" id="submitBtn">Join Waitlist</button>
+                </div>
+                <div class="success" id="successMsg">You're on the list! We'll be in touch soon.</div>
+            </form>
+        </div>
+
+        <a href="#pain-points" class="scroll-indicator">
+            <span>Learn more</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </a>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section id="pain-points" class="pain-points">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">The Challenge</span>
+                <h2 class="section-title">The Daily Juggle<br><span>is Real</span></h2>
+            </div>
+
+            <div class="pain-grid">
+                <div class="pain-card reveal">
+                    <div class="pain-icon">📧</div>
+                    <h3>Email Overload</h3>
+                    <p>School newsletters, activity updates, permission slips, payment reminders. Critical information buried in an endless stream of messages from teachers, coaches, and programs.</p>
+                </div>
+
+                <div class="pain-card reveal">
+                    <div class="pain-icon">📅</div>
+                    <h3>Calendar Chaos</h3>
+                    <p>Multiple kids, multiple schools, after-school programs, early releases, holidays, half-days. One missed update means a scramble to find last-minute childcare.</p>
+                </div>
+
+                <div class="pain-card reveal">
+                    <div class="pain-icon">🧠</div>
+                    <h3>Mental Load</h3>
+                    <p>"Is there school tomorrow?" "When's the winter concert?" "What are the spelling words?" Questions that interrupt your focus and fragment your day.</p>
+                </div>
+
+                <div class="pain-card reveal">
+                    <div class="pain-icon">⏰</div>
+                    <h3>Time Poverty</h3>
+                    <p>Between back-to-back meetings and family responsibilities, there's no time to parse through emails or cross-reference calendars. Something always slips.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">The Solution</span>
+                <h2 class="section-title">Meet Your AI<br><span>Family Executive</span></h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📬</div>
+                    <h3>Smart Email Search</h3>
+                    <p>All your family emails indexed and searchable. Find that permission slip, payment deadline, or field trip details in seconds.</p>
+                    <ul class="feature-list">
+                        <li>What's the deadline for the field trip?</li>
+                        <li>Find emails about the spring concert</li>
+                        <li>What did the teacher say about homework?</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🏫</div>
+                    <h3>School Calendar Integration</h3>
+                    <p>Automatic sync with your kids' school calendars. Know instantly if there's school, early release, or holidays coming up.</p>
+                    <ul class="feature-list">
+                        <li>Is there school next Monday?</li>
+                        <li>When is spring break?</li>
+                        <li>Any early release days this week?</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📝</div>
+                    <h3>Daily Briefings</h3>
+                    <p>Start each day knowing exactly what's happening. Upcoming events, deadlines, school closures, and action items delivered on demand.</p>
+                    <ul class="feature-list">
+                        <li>What do I need to know for tomorrow?</li>
+                        <li>What's happening this week?</li>
+                        <li>Any deadlines coming up?</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">✅</div>
+                    <h3>Task & Calendar Management</h3>
+                    <p>Create tasks and calendar events through natural conversation. Never forget to sign a permission slip or schedule a conference.</p>
+                    <ul class="feature-list">
+                        <li>Add soccer practice to the calendar</li>
+                        <li>Remind me to send the lunch money</li>
+                        <li>Schedule the dentist appointment</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">💬</div>
+                    <h3>Quick Family Texts</h3>
+                    <p>Send quick updates to family members without switching apps. Coordinate pickups, share updates, and stay connected.</p>
+                    <ul class="feature-list">
+                        <li>Text Charlotte I'm running late</li>
+                        <li>Message about the schedule change</li>
+                        <li>Send a reminder about dinner</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🎯</div>
+                    <h3>After-School Tracking</h3>
+                    <p>Keep track of after-school care schedules, hours, and closures. Know exactly when programs are open or closed.</p>
+                    <ul class="feature-list">
+                        <li>Is KAH open during winter break?</li>
+                        <li>What are the after-school hours?</li>
+                        <li>Does childcare have full-day care?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">How It Works</span>
+                <h2 class="section-title">Simple Setup,<br><span>Powerful Results</span></h2>
+            </div>
+
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Your Family's Information</h3>
+                        <p>Link your email accounts, school calendars, and after-school programs. Exhale securely indexes and organizes everything in one place.</p>
+                    </div>
+                </div>
+
+                <div class="step reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Ask Anything, Anytime</h3>
+                        <p>Message Exhale via Telegram just like texting a friend. Natural language questions get instant, accurate answers from your family's data.</p>
+                    </div>
+                </div>
+
+                <div class="step reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Stay Ahead of the Chaos</h3>
+                        <p>Get daily briefings, deadline alerts, and proactive reminders. Never miss another school event, permission slip, or important deadline.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-wrapper reveal">
+                <div class="cta-content">
+                    <span class="section-label">Early Access</span>
+                    <h2>Ready to Exhale?</h2>
+                    <p>Join the waitlist and be the first to experience the AI executive that gives you back your mental bandwidth. Early supporters receive priority access.</p>
+                </div>
+                <div class="cta-form-container">
+                    <form id="waitlistFormBottom">
+                        <div class="input-group" id="inputGroupBottom">
+                            <div class="input-wrapper">
+                                <input
+                                    type="email"
+                                    id="emailInputBottom"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    required
+                                    autocomplete="email"
+                                >
+                            </div>
+                            <button type="submit" id="submitBtnBottom">Join Waitlist</button>
+                        </div>
+                        <p class="form-note">No spam. Unsubscribe anytime. We respect your inbox.</p>
+                        <div class="success" id="successMsgBottom">You're on the list! We'll be in touch soon.</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">Exhale</span>
+                <p class="footer-tagline">Breathe easy. Never miss what matters.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 Exhale. Built for executive parents, by executive parents.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Gradually clear blur overlay after page loads
+        window.addEventListener('load', function() {
+            const overlay = document.getElementById('blurOverlay');
+            let blur = 20;
+            const duration = 1500; // total duration in ms
+            const steps = 60;
+            const interval = duration / steps;
+            const blurStep = blur / steps;
+
+            setTimeout(function() {
+                const animate = setInterval(function() {
+                    blur -= blurStep;
+                    if (blur <= 0) {
+                        clearInterval(animate);
+                        overlay.remove();
+                    } else {
+                        overlay.style.backdropFilter = 'blur(' + blur + 'px)';
+                        overlay.style.webkitBackdropFilter = 'blur(' + blur + 'px)';
+                    }
+                }, interval);
+            }, 800);
+        });
+    </script>
+</body>
+</html>
+<!--kurtiancastro@gmail.com December 2025-->
