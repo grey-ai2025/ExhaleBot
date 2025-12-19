@@ -690,8 +690,19 @@ body.light-mode .pain-card {
 }
 
 .pain-icon {
-    font-size: 2.5rem;
+    width: 48px;
+    height: 48px;
     margin-bottom: 1.5rem;
+    color: var(--cyan-glow);
+}
+
+body.light-mode .pain-icon {
+    color: var(--cyan-deep);
+}
+
+.pain-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .pain-card h3 {
@@ -788,11 +799,17 @@ body.light-mode .feature-card:hover {
     background: linear-gradient(135deg, rgba(173, 251, 246, 0.2) 0%, rgba(50, 224, 196, 0.1) 100%);
     border-radius: 16px;
     margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    color: var(--cyan-glow);
 }
 
 body.light-mode .feature-icon {
     background: linear-gradient(135deg, var(--cyan-pale) 0%, rgba(50, 224, 196, 0.2) 100%);
+    color: var(--cyan-deep);
+}
+
+.feature-icon svg {
+    width: 32px;
+    height: 32px;
 }
 
 .feature-card h3 {
