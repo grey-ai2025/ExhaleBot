@@ -608,6 +608,10 @@ body.light-mode .section-label {
     color: var(--cyan-glow);
 }
 
+.section-title span.no-italic {
+    font-style: normal;
+}
+
 body.light-mode .section-title span {
     color: var(--cyan-deep);
 }
