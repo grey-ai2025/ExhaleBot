@@ -1,6 +1,5 @@
 /**
- * Exhale Waitlist - Advanced Scroll Effects & Form Handling
- * Premium interactions with Lenis smooth scroll
+ * Exhale - Scroll Effects, Theme & Form Handling
  */
 
 // ===========================================
@@ -15,12 +14,11 @@ const CONFIG = {
 // ===========================================
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
-    // initLenis(); // Disabled - causes scroll delay on GitHub Pages
     initParallax();
     initScrollReveal();
-    initFormHandler('waitlistForm', 'emailInput', 'submitBtn', 'inputGroup', 'successMsg');
-    initFormHandler('waitlistFormBottom', 'emailInputBottom', 'submitBtnBottom', 'inputGroupBottom', 'successMsgBottom');
     initCursorGlow();
+    initBlurOverlay();
+    initVideoPlayer();
 });
 
 // ===========================================
@@ -63,47 +61,6 @@ function initThemeToggle() {
                 document.body.classList.remove('light-mode');
             }
         }
-    });
-}
-
-// ===========================================
-// Lenis Smooth Scroll
-// ===========================================
-let lenis;
-
-function initLenis() {
-    if (typeof Lenis === 'undefined') {
-        console.warn('Lenis not loaded, using native scroll');
-        return;
-    }
-
-    lenis = new Lenis({
-        duration: 0.8,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        wheelMultiplier: 1.2,
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    // Handle anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                lenis.scrollTo(target, { offset: -40 });
-            }
-        });
     });
 }
 
@@ -311,13 +268,69 @@ function shakeElement(element) {
     }, 500);
 }
 
-// Add shake keyframes dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
-        20%, 40%, 60%, 80% { transform: translateX(6px); }
-    }
-`;
-document.head.appendChild(style);
+// ===========================================
+// Blur Overlay (Page Load Effect)
+// ===========================================
+function initBlurOverlay() {
+    window.addEventListener('load', function() {
+        const overlay = document.getElementById('blurOverlay');
+        if (!overlay) return;
+
+        let blur = 20;
+        const duration = 1500;
+        const steps = 60;
+        const interval = duration / steps;
+        const blurStep = blur / steps;
+
+        setTimeout(function() {
+            const animate = setInterval(function() {
+                blur -= blurStep;
+                if (blur <= 0) {
+                    clearInterval(animate);
+                    overlay.remove();
+                } else {
+                    overlay.style.backdropFilter = 'blur(' + blur + 'px)';
+                    overlay.style.webkitBackdropFilter = 'blur(' + blur + 'px)';
+                }
+            }, interval);
+        }, 800);
+    });
+}
+
+// ===========================================
+// Video Player
+// ===========================================
+function initVideoPlayer() {
+    const container = document.querySelector('.video-container');
+    if (!container) return;
+
+    const video = container.querySelector('video');
+    const btn = container.querySelector('.video-play-btn');
+    if (!video || !btn) return;
+
+    const playSVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+    const pauseSVG = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+    btn.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+
+    video.addEventListener('play', function() {
+        container.classList.add('playing');
+        btn.innerHTML = pauseSVG;
+    });
+
+    video.addEventListener('pause', function() {
+        container.classList.remove('playing');
+        btn.innerHTML = playSVG;
+    });
+
+    video.addEventListener('ended', function() {
+        container.classList.remove('playing');
+        btn.innerHTML = playSVG;
+    });
+}
