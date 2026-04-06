@@ -422,6 +422,23 @@ body.light-mode .logo-e-extended rect {
     margin-bottom: 50px;
 }
 
+.by-grey-ai {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 18px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.by-grey-ai:hover {
+    opacity: 1;
+    color: var(--text-primary);
+}
+
 /* ===========================================
    Form Styles - Original Glassmorphism
    =========================================== */
