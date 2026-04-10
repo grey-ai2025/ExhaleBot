@@ -1477,7 +1477,7 @@ body.light-mode .typeform-wrapper::before {
    Footer
    =========================================== */
 .footer {
-    padding: 4rem 2rem;
+    padding: 1.5rem 2rem;
     background: #050508;
     position: relative;
     z-index: 1;
@@ -1510,9 +1510,10 @@ body.light-mode .footer {
 
 .footer-brand {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .footer-logo {
@@ -1522,8 +1523,7 @@ body.light-mode .footer {
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--cyan-glow);
-    display: flex;
-    align-items: center;
+    line-height: 1;
 }
 
 
@@ -1548,12 +1548,29 @@ body.light-mode .footer {
     color: var(--white);
 }
 
-.footer-copy {
+.footer-by {
     font-family: var(--font-serif);
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    color: var(--gray-500);
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray-400);
+    letter-spacing: 0.1em;
+}
+
+.footer-brand a {
+    display: flex;
+    align-items: center;
+}
+
+.footer-grey-logo {
+    height: 5rem;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-grey-logo:hover {
+    opacity: 1;
 }
 
 /* ===========================================
